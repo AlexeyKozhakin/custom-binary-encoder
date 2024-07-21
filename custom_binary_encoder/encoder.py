@@ -29,8 +29,6 @@ def custom_binary_encoder(categories):
     n = math.ceil(math.log2(num_categories))
 
     combinations = generate_binary_combinations(n)
-    # for combo in combinations:
-    #     print(combo)
 
     # Сгенерировать бинарные векторы длины n
     binary_vectors = []
@@ -58,7 +56,6 @@ def apply_custom_binary_encoding(data, column):
     """
     unique_categories = data[column].unique()
     encoding_map = custom_binary_encoder(unique_categories)
-    print(encoding_map)
     # Применение кодирования
     encoded_columns = data[column].map(encoding_map).apply(pd.Series)
     encoded_columns.columns = [f"{column}_{i}" for i in range(encoded_columns.shape[1])]
